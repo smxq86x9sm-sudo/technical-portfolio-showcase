@@ -1,0 +1,2 @@
+# Minimal deps for portfolio smoke tests
+pytest>=8.0.0

@@ -1,0 +1,28 @@
+services:
+  portfolio:
+    build: .
+    image: technical-portfolio-showcase:latest
+    volumes:
+      - ./n8n-workflows:/workflows:ro
+    command: ["python", "-c", "import pathlib; print('Workflows:', [p.name for p in pathlib.Path('/workflows').glob('*.json')])"]
+
+  # Optional: local n8n for importing the JSON workflows
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Europe/Madrid
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./n8n-workflows:/import:ro
+    profiles:
+      - n8n
+
+volumes:
+  n8n_data:
