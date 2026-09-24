@@ -4,6 +4,12 @@ Professional demonstration of AI automation, secure agent design, and n8n produc
 
 Prepared as a clean technical business card (Universidad de La Laguna / LinkedIn / freelance).
 
+**Languages:** [English](README.md) · [Español](docs/README.es.md) · [Deutsch](docs/README.de.md)
+
+**Quick demo:** `bash scripts/demo.sh` — see [docs/DEMO.md](docs/DEMO.md)
+
+**Community:** [CONTRIBUTING](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
+
 ---
 
 ## What this repository demonstrates
@@ -37,6 +43,15 @@ All files are **sanitized** (credentials removed). Import → reconnect your own
 3. Re-connect credentials (OpenAI / Gemini / Pinecone / Gmail / Telegram etc.)
 4. Activate
 
+### Full local demo
+
+```bash
+bash scripts/demo.sh
+# validate JSON → pytest → docker smoke
+```
+
+Details: [docs/DEMO.md](docs/DEMO.md)
+
 ---
 
 ## Project structure
@@ -44,11 +59,15 @@ All files are **sanitized** (credentials removed). Import → reconnect your own
 ```
 .
 ├── README.md
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
 ├── LICENSE
-├── .gitignore
-├── n8n-workflows/          # Sanitized production-style workflows
-└── docs/
-    └── PURPOSE.md          # Context for academic / professional review
+├── Dockerfile / docker-compose.yml
+├── n8n-workflows/     # Sanitized importable workflows
+├── docs/               # PURPOSE, DEMO, ARCHITECTURE, ES/DE
+├── scripts/            # validate_workflows.py, demo.sh
+├── tests/
+└── .github/workflows/  # CI
 ```
 
 ---
